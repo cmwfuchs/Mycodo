@@ -436,4 +436,13 @@ TRANSLATIONS = {
     # '': {
     #     'title': lazy_gettext(''),
     #     'phrase': lazy_gettext('')},
+    'serial_location': {
+        'title': lazy_gettext('Serial Location'),
+        'phrase': lazy_gettext('Location of the serial device')},
+    'serial_command': {
+        'title': lazy_gettext('Serial Command Byte'),
+        'phrase': lazy_gettext('Command Byte to trigger the corresponding measurement')},
+    'serial_baud_rate': {
+        'title': lazy_gettext('Serial Baud Rate'),
+        'phrase': lazy_gettext('Baud rate of the serial device')},
 }

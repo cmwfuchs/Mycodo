@@ -154,6 +154,13 @@ def input_add(form_add):
                 if dict_has_value('gpio_location'):
                     new_input.gpio_location = dict_inputs[input_name]['gpio_location']
 
+            # Serial options
+            elif input_interface == 'Serial':
+                if dict_has_value('serial_location'):
+                    new_input.serial_location = dict_inputs[input_name]['serial_location']
+                if dict_has_value('serial_baud_rate'):
+                    new_input.serial_baud_rate = dict_inputs[input_name]['serial_baud_rate']
+
             # Custom location location
             elif dict_has_value('location'):
                 new_input.location = dict_inputs[input_name]['location']['options'][0][0]  # First entry in list
@@ -395,8 +402,11 @@ def input_mod(form_mod, request_form):
             messages["error"].append(gettext(
                 "The Read Period cannot be less than the Pre Output Duration"))
 
-        if (form_mod.uart_location.data and
-                not os.path.exists(form_mod.uart_location.data)):
+        # MODIFIED to add serial input
+        if ((form_mod.uart_location.data and
+                not os.path.exists(form_mod.uart_location.data)) or
+            (form_mod.serial_location.data and
+                not os.path.exists(form_mod.serial_location.data))):
             messages["warning"].append(gettext(
                 "Invalid device or improper permissions to read device"))
 
@@ -418,6 +428,9 @@ def input_mod(form_mod, request_form):
             mod_input.uart_location = form_mod.uart_location.data
         if form_mod.gpio_location.data and form_mod.gpio_location.data is not None:
             mod_input.gpio_location = form_mod.gpio_location.data
+        # MODIFIED to add serial input
+        if form_mod.serial_location.data:
+            mod_input.serial_location = form_mod.serial_location.data
 
         if form_mod.power_output_id.data:
             mod_input.power_output_id = form_mod.power_output_id.data

@@ -51,6 +51,10 @@ class Input(CRUDMixin, db.Model):
     # Communication (Bluetooth)
     bt_adapter = db.Column(db.Text, default='hci0')
 
+    # Serial
+    serial_location = db.Column(db.Text, default=None)
+    serial_baud_rate = db.Column(db.Integer, default=None)
+
     # Switch options
     switch_edge = db.Column(db.Text, default='rising')
     switch_bouncetime = db.Column(db.Integer, default=50)

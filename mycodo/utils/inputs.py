@@ -129,7 +129,7 @@ def rescale_measurements(measurement, measurement_value):
 def list_devices_using_interface(interface):
     """
     Generates a list of input devices that use a particular interface
-    :param interface: string, can be 'GPIO', 'I2C', 'UART', 'BT', '1WIRE', 'Mycodo', 'RPi'
+    :param interface: string, can be 'GPIO', 'I2C', 'UART', 'BT', '1WIRE', 'Mycodo', 'RPi', 'Serial'
     :return: list of strings
     """
     def check(check_input, dict_all_inputs, check_interface):
@@ -264,6 +264,11 @@ def parse_input_information(exclude_custom=False):
             # Bluetooth (BT)
             dict_inputs = dict_has_value(dict_inputs, input_custom, 'bt_location')
             dict_inputs = dict_has_value(dict_inputs, input_custom, 'bt_adapter')
+
+            #MODIFIED to add Serial input
+            # Serial
+            dict_inputs = dict_has_value(dict_inputs, input_custom, 'serial_location')
+            dict_inputs = dict_has_value(dict_inputs, input_custom, 'serial_baud_rate')
 
             # Which form options to display and whether each option is enabled
             dict_inputs = dict_has_value(dict_inputs, input_custom, 'options_enabled')

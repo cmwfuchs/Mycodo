@@ -1,0 +1,24 @@
+{% if each_device.interface == 'Serial' %}
+  {% if 'serial_location' in dict_options['options_disabled'] %}
+
+<div class="col-auto">
+  {{form.serial_location.label(class_='control-label')}}
+  <div>
+    {{form.serial_location(class_='form-control', value=each_device.serial_location, disabled=True)}}
+    {{each_device.toString()}}
+  </div>
+</div>
+
+  {% endif %}
+
+  {% if 'serial_location' in dict_options['options_enabled']  %}
+
+<div class="col-auto">
+  {{form.serial_location.label(class_='control-label')}}
+  <div>
+    {{form.serial_location(class_='form-control', value=each_device.serial_location, **{'title': dict_translation['serial_location']['phrase']})}}
+  </div>
+</div>
+
+  {% endif %}
+{% endif %}

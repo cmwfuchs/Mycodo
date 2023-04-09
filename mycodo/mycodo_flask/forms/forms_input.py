@@ -102,16 +102,20 @@ class InputMod(FlaskForm):
     location = StringField(lazy_gettext('Location'))
     ftdi_location = StringField(TRANSLATIONS['ftdi_location']['title'])
     uart_location = StringField(TRANSLATIONS['uart_location']['title'])
+    serial_location = StringField(TRANSLATIONS['serial_location']['title'])
     gpio_location = IntegerField(TRANSLATIONS['gpio_location']['title'])
     i2c_location = StringField(TRANSLATIONS['i2c_location']['title'])
     i2c_bus = IntegerField(TRANSLATIONS['i2c_bus']['title'], widget=NumberInput())
     baud_rate = IntegerField(TRANSLATIONS['baud_rate']['title'], widget=NumberInput())
+    serial_baud_rate = IntegerField(TRANSLATIONS['serial_baud_rate']['title'], widget=NumberInput())
     power_output_id = StringField(lazy_gettext('Power Output'))  # For powering input
     calibrate_sensor_measure = StringField(lazy_gettext('Calibration Measurement'))
     resolution = IntegerField(TRANSLATIONS['resolution']['title'], widget=NumberInput())
     resolution_2 = IntegerField(TRANSLATIONS['resolution']['title'], widget=NumberInput())
     sensitivity = IntegerField( TRANSLATIONS['sensitivity']['title'], widget=NumberInput())
     measurements_enabled = SelectMultipleField(TRANSLATIONS['measurements_enabled']['title'])
+    serial_location = StringField(TRANSLATIONS['serial_location']['title'])
+    serial_baud_rate = IntegerField(TRANSLATIONS['serial_baud_rate']['title'], widget=NumberInput())
 
     # Server options
     host = StringField(TRANSLATIONS['host']['title'])

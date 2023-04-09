@@ -117,6 +117,8 @@ if __name__ == "__main__":
                             list_interfaces.append("Python")
                         elif each_type == 'SHELL':
                             list_interfaces.append("Shell")
+                        elif each_type == 'Serial':
+                            list_interfaces.append("Serial")
                         else:
                             list_interfaces.append(each_type)
                     out_file.write("- Interfaces: {}\n".format(", ".join(list_interfaces)))

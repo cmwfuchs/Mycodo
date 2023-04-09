@@ -1,4 +1,4 @@
-{% if each_device.interface == 'UART' %}
+{% if each_device.interface == 'UART' or each_device.interface == 'Serial'%}
 
   {% if 'uart_baud_rate' in dict_options['options_disabled'] or
         'uart_baud_rate' in dict_options['options_enabled']
@@ -19,4 +19,21 @@
 
   {% endif %}
 
+    {% if 'serial_baud_rate' in dict_options['options_disabled'] or
+          'serial_baud_rate' in dict_options['options_enabled'] %}
+
+    <div class="col-auto">
+    {{form.serial_baud_rate.label(class_='control-label')}}
+    <div>
+
+    {%- if 'serial_baud_rate' in dict_options['options_disabled']-%}
+      {{form.serial_baud_rate(class_='form-control', value=each_device.serial_baud_rate, disabled=True, **{'title': dict_translation['serial_baud_rate']['phrase']})}}
+    {% else %}
+      {{form.serial_baud_rate(class_='form-control', value=each_device.serial_baud_rate, **{'title': dict_translation['serial_baud_rate']['phrase']})}}
+    {%- endif -%}
+
+    </div>
+  </div>
+
+  {% endif %}
 {% endif %}
